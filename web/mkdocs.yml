@@ -6,11 +6,13 @@ nav:
     - ' 2: Audio Signal Processing Fundamentals ' : lectures/lecture2.md
     - ' 3: Digital Audio Systems Architectures and Audio Callback ' : lectures/lecture3.md
     - ' 4: Hardware Control and Audio Codec Configuration ' : lectures/lecture4.md
-    - ' 5: Introduction to Faust ' : lectures/lecture5.md
-    - ' 6: Audio Processing Basics I ' : lectures/lecture6.md
-    - ' 7: Audio Processing Basics II ' : lectures/lecture7.md
-    - ' 8: Faust on the Teensy and Advanced Control ' : lectures/lecture8.md
-    - ' 9: Some Other Usefull Things to Know ' : lectures/lecture9.md
+    - ' 5: Audio Processing Basics I ' : lectures/lecture6.md
+    - ' 6: Embedded basics: interrupts ' : lectures/embedded1.md
+    - ' 7: Embedded basics: embedded OS ' : lectures/embedded2.md
+    - ' 8: Audio Processing Basics II ' : lectures/lecture7.md
+    - ' 9: Introduction to Faust ' : lectures/lecture5.md
+    - ' 10: Faust on the Teensy and Advanced Control ' : lectures/lecture8.md
+    - ' 11: Some Other Usefull Things to Know ' : lectures/lecture9.md
   - Projects: projects.md
   - Code: "https://github.com/inria-emeraude/son-ens"
     
