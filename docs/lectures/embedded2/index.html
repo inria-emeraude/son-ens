@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://inria-emeraude.github.io/son-ens/lectures/lecture5/">
+        <link rel="canonical" href="https://inria-emeraude.github.io/son-ens/lectures/embedded2/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title> 9: Introduction to Faust  - SON @ ENS Lyon</title>
+        <title> 7: Embedded basics: embedded OS  - SON @ ENS Lyon</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -64,7 +64,7 @@
 </li>
                                     
 <li>
-    <a href="../embedded2/" class="dropdown-item"> 7: Embedded basics: embedded OS </a>
+    <a href="./" class="dropdown-item active" aria-current="page"> 7: Embedded basics: embedded OS </a>
 </li>
                                     
 <li>
@@ -72,7 +72,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page"> 9: Introduction to Faust </a>
+    <a href="../lecture5/" class="dropdown-item"> 9: Introduction to Faust </a>
 </li>
                                     
 <li>
@@ -99,12 +99,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../lecture7/" class="nav-link">
+                                <a rel="prev" href="../embedded1/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../lecture8/" class="nav-link">
+                                <a rel="next" href="../lecture7/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -126,8 +126,24 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#lecture-5-introduction-to-faust" class="nav-link">Lecture 5: Introduction to Faust</a>
+            <li class="nav-item" data-bs-level="1"><a href="#embedded-operating-systems" class="nav-link">Embedded Operating Systems</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#slides" class="nav-link">Slides</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#a-teensy-program-with-protothreads" class="nav-link">A teensy program with protothreads</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#add-a-uart-printing" class="nav-link">Add a UART printing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#control-led-and-sound-with-keyboard" class="nav-link">Control LED and sound with keyboard</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -135,8 +151,194 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="lecture-5-introduction-to-faust">Lecture 5: Introduction to Faust</h1>
-<p>This tutorial on the Faust documentation website gives a good overview of the concepts that were introduced during this lecture: <a href="https://faustdoc.grame.fr/tutorials/basic-osc/">https://faustdoc.grame.fr/tutorials/basic-osc/</a>.</p></div>
+<h1 id="embedded-operating-systems">Embedded Operating Systems</h1>
+<p>This course will present the important notions of embedded operating systems and show how a primitive operating system (protothreads) can be deployed on teensy.</p>
+<h2 id="slides">Slides</h2>
+<p>Slides are available  <a href="img/cours_2_os.pdf">here</a></p>
+<h2 id="a-teensy-program-with-protothreads">A teensy program with protothreads</h2>
+<p>Download the <a href="img/protothreads_blink.tar">protothreads_blink.tar</a> archive and uncompress it.</p>
+<p>Have a look at the <code>protothread_blink.ino</code> program. This programs defines two protothreads:<code>thread_red_led</code> that switch the LED state every  seconds, and <code>thread_sine</code> that changes the sine tune every 0.25 seconds. Both these thread are unlock by a dedicated timer. </p>
+<p>Can you understand how it works? </p>
+<p>This example, of course, is a bit trivial because the changes in the LED state and the sine tune could have been done in timer callbacks. But, first,  we try to avoid writing to much code in the call back and, second, one has to imagine other conditions for unlocking the threads such as internal variable states or input on UART... </p>
+<p>What happens if one <code>PT_WAIT_UNTIL</code> is commented out? For instance in <code>thread_led_red</code>:</p>
+<p><code>//PT_WAIT_UNTIL(pt, TIMER_LED_RED_ON == 1);</code></p>
+<p>Note finaly, note that many variables have been set as global variables as local protothread variables are not remanent.</p>
+<h2 id="add-a-uart-printing">Add a UART printing</h2>
+<p>copy this <code>protothreads_blink</code> directory to a new <code>protothreads_count</code> and modify the program to print on UART serial port, every second,   the number of blinking of the LED since the beginning of the program.  This imply the following tasks (see <a href="https://www.pjrc.com/teensy/td_uart.html">UART teensy Documentation</a>):</p>
+<ul>
+<li>Initialize serial communication at 9600 bauds using <code>Serial.begin(9600);</code></li>
+<li>Declare a global variable <code>blink_count</code></li>
+<li>Declare a new timer counting each second (up to four interval timers can be used in teensy 4.0)</li>
+<li>Increment <code>blink_count</code> at each blink</li>
+<li>Print (using <code>Serial.print</code>) the value of <code>blink_count</code> in new timer callback.</li>
+</ul>
+<p>Use the command <code>minicom -D /dev/ttyACM0</code> to visualize what is send on serial port by the teensy. </p>
+<p>For the moment we do not really need a new protothread, as we can assume that two calls to <code>Serial.printf</code> are fast enough not to perturbate audio.</p>
+<p>Imagine that we want to control our audio device using the keyboard. Receiving a caracter from the keyboard and performing the action necessary might be too long for an interrupt handle function. Hence we will add a protothread to do that. </p>
+<h2 id="control-led-and-sound-with-keyboard">Control LED and sound with keyboard</h2>
+<p>copy this <code>protothreads_count</code> directory to a new <code>protothreads_control</code></p>
+<p>declare a new protothread <code>`static PT_THREAD(thread_receive(struct pt *pt))</code> that will receive characters on UART serial port for the host computer. the condition in the <code>PT_WAIT_UNTIL</code> will be <code>Serial.available()&gt;0</code> (indicating that the receiving buffer contains some characters, see <a href="https://www.pjrc.com/teensy/td_uart.html">UART teensy Documentation</a>). As soon as a character is typed, echo its ascii code. </p>
+<p>Use that mecanism to control the sound and LED:</p>
+<ul>
+<li>Typing 's' will switch off/on the sound (i.e. setting <code>`myDsp.setFreq(0)</code>) </li>
+<li>Typing 'o' will switch off/on the LED blinking.</li>
+</ul>
+<p>Hint: you can switch the value of a variable <code>var</code> between 0 and 1 using the Xor operator: <code>var = var ^ 1;</code></p>
+<p>** Solution **</p>
+<!---
+
+<pre><code>
+#include &lt;Arduino.h&gt;
+#include &lt;Audio.h&gt;
+
+#include &quot;MyDsp.h&quot;
+#include &quot;protothreads/pt.h&quot;
+
+static struct pt pt[3];
+
+
+// Teensy 3.x and 4.x  have the LED on pin 13
+const int ledPin = LED_BUILTIN;
+volatile int ledState = LOW;
+volatile unsigned int  TIMER_LED_RED_ON = 0;
+volatile unsigned int  TIMER_SINE_ON = 0;
+volatile unsigned int  SOUND_ON = 1;
+volatile unsigned int  LED_ON = 1;
+//blink count
+volatile unsigned long blink_count = 0; // use volatile for shared variables
+
+IntervalTimer TimerLed;
+IntervalTimer TimerSine;
+IntervalTimer TimerCount;
+
+MyDsp myDsp;
+AudioOutputI2S out;
+AudioControlSGTL5000 audioShield;
+AudioConnection patchCord0(myDsp,0,out,0);
+AudioConnection patchCord1(myDsp,0,out,1);
+
+
+static PT_THREAD(thread_led_red(struct pt *pt))
+{
+    PT_BEGIN(pt);
+
+    while(1)
+    {
+      if (ledState == HIGH)
+    ledState = LOW;
+      else 
+    if (LED_ON == 1)
+      ledState = HIGH;
+        else
+      ledState = LOW;
+      digitalWrite(ledPin, ledState);
+      TIMER_LED_RED_ON = 0;
+      PT_WAIT_UNTIL(pt, TIMER_LED_RED_ON == 1);
+    }
+
+    PT_END(pt);
+}
+
+static PT_THREAD(thread_sine(struct pt *pt))
+{
+    PT_BEGIN(pt);
+
+    while(1)
+    {
+      TIMER_SINE_ON = 0;
+      if (SOUND_ON == 1)
+    myDsp.setFreq(random(50,1000));
+      else
+    myDsp.setFreq(0);
+
+      PT_WAIT_UNTIL(pt, TIMER_SINE_ON == 1);
+    }
+    PT_END(pt);
+}
+
+static PT_THREAD(thread_receive(struct pt *pt))
+{
+    PT_BEGIN(pt);
+
+    while(1)
+    {
+
+      PT_WAIT_UNTIL(pt, Serial.available() &gt; 0);
+      while (Serial.available() &gt; 0) {
+        int incomingByte = Serial.read();
+          Serial.print(&quot;UART received: &quot;);
+          Serial.println(incomingByte, DEC);
+          if (incomingByte == 's')
+            {
+            SOUND_ON = SOUND_ON ^ 1;
+            Serial.print(&quot;SOUND_ON is now: &quot;);
+            Serial.println(SOUND_ON, DEC);
+            }
+          if (incomingByte == 'l') {
+            LED_ON = LED_ON ^ 1;
+            Serial.print(&quot;LED_ON is now: &quot;);
+            Serial.println(LED_ON, DEC);
+          }
+      }
+    }
+
+    PT_END(pt);
+}
+
+void timer_interrupt_led() {
+  TIMER_LED_RED_ON = 1;
+  //blink countxs
+  blink_count++;
+}
+
+//blink count
+void timer_interrupt_count() {
+  Serial.print(&quot;number of blink=&quot;);
+  Serial.println(blink_count);
+}
+
+void timer_interrupt_sine() {
+  TIMER_SINE_ON = 1;
+}
+
+
+
+void setup(void)
+{
+
+  pinMode(ledPin, OUTPUT);
+
+  //blink count
+  Serial.begin(9600);
+
+  AudioMemory(2);
+  audioShield.enable();
+  audioShield.volume(0.5);
+
+  TimerLed.begin(timer_interrupt_led, 500000);  // blinkLED to run every 0.5 seconds
+  TimerSine.begin(timer_interrupt_sine, 100000);  // Sine  to run every 0.1 seconds
+  TimerCount.begin(timer_interrupt_count, 2000000);  // Count blink every 2 seconds
+
+  PT_INIT(&amp;pt[0]);
+  PT_INIT(&amp;pt[1]);
+
+
+
+}
+
+
+void loop(void)
+{
+
+    thread_led_red(&amp;pt[0]);
+    thread_sine(&amp;pt[1]);
+    thread_receive(&amp;pt[2]);
+
+}
+
+</code></pre>
+
+---></div>
             </div>
         </div>
 

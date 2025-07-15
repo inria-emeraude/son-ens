@@ -2,9 +2,9 @@
 
 In this course, students program an embedded system (the Teensy 4.0: <https://www.pjrc.com/store/teensy40.html>) for real-time audio signal processing applications. By doing so, they learn the basics of audio software architecture, audio signal processing in C++, and embedded system programming (C++).
 
-The course starts with lectures  on embedded real-time audio signal processing. During this workshop, students are walked through the architecture of a real-time audio DSP system (e.g., audio callback, buffering, sampling, etc.), and learn various basic techniques for audio signal processing (e.g., filters, oscillators, sound synthesis techniques, sound processing techniques, sound analysis techniques, etc.) taking a very practical approach.
+The course starts with lectures on embedded real-time audio signal processing. During this period, students are walked through the architecture of a real-time audio DSP system (e.g., audio callback, buffering, sampling, etc.), and learn various basic techniques for audio signal processing (e.g., filters, oscillators, sound synthesis techniques, sound processing techniques, sound analysis techniques, etc.) taking a very practical approach.
 
-After this period, various project ideas are suggested to students. Students work in groups of 2 on projects. The project period culminates in a final presentation taking the form of a 10mn presentation where each group of students can present his project.
+After this period, various project ideas are suggested to students. Students work in groups of 2 on projects. The project period culminates in a final presentation taking the form of a 10 minutes presentation where each group of students can present his project.
 
 
 ## Instructors
