@@ -7,7 +7,7 @@ The course starts with lectures on embedded real-time audio signal processing. D
 After this period, various project ideas are suggested to students. Students work in groups of 2 on projects. The project period culminates in a final presentation taking the form of a 10 minutes presentation where each group of students can present his project.
 
 
-## Instructors
+## Instructors are:
 
 * [Romain Michon](http://perso.citi-lab.fr/rmichon/) (Inria)
 * [Tanguy Risset](http://perso.citi.insa-lyon.fr/trisset/) (INSA Lyon)
