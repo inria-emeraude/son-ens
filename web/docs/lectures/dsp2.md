@@ -1,4 +1,4 @@
-# Lecture 7: Audio Processing Basics II
+# Audio Processing Basics II
 
 ## Harmonic Distortion: Rock On!
 
@@ -147,16 +147,18 @@ In practice, the Karplus-Strong algorithm is not a physical model per se and is 
 
 Waveguide physical modeling has been extensively used in modern synthesizers to synthesize the sound of acoustic instruments. Julius O. Smith (Stanford professor) is the father of waveguide physical modeling. 
 
-## Exercises
+## Take Home Exam (CC)
 
-### Making Resonant Lowpass, Bandpass and Highpass
+### Biquad Filter (TODO Pt)
 
-This short tutorial demonstrates how to implement a series of filters that can be configured as resonant lowpass, bandpass, and highpasses.
+Design a C++ class implementing a biquad filter (direct form 2): [https://en.wikipedia.org/wiki/Digital_biquad_filter](https://en.wikipedia.org/wiki/Digital_biquad_filter). A single method of this class should allow you to configure the filter coefficients (e.g., `setCoefs(a1,a2,b0,b1,b2)`).
 
-For this, you will first need to implement a biquad filter: [https://en.wikipedia.org/wiki/Digital_biquad_filter](https://en.wikipedia.org/wiki/Digital_biquad_filter) (direct form 2 is preferred). You will then have to format the coefficients of that filter using the [bilinear transform](https://en.wikipedia.org/wiki/Bilinear_transform) such that:
+### Implementing Bilinear Tranform (TODO Pt)
+
+Implement a method in the previous class formating the filter coefficients using the [bilinear transform](https://en.wikipedia.org/wiki/Bilinear_transform) such that:
 
 ```
-tf2s(b2,b1,b0,a1,a0,w1) = tf2(b0d,b1d,b2d,a1d,a2d)
+setBilinearCoefs(b2,b1,b0,a1,a0,w1) = setCoefs(b0d,b1d,b2d,a1d,a2d)
 with {
   c   = 1/tan(w1*0.5/SR);
   csq = c*c;
@@ -169,12 +171,12 @@ with {
 };
 ```
 
-where `tf2` is a direct form 2 biquad and SR the sampling rate.
+### Making Resonant Lowpass, Bandpass and Highpass (TODO Pt)
 
-Finally, you'll have to format the coefficients of the `tf2s` filter such that:
+Add methods to your biquad class to configure the filter as a lowpass, highpass, or bandpass (one method for each) such that:
 
 ```
-resonlp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
+setResonlp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
 with {
      wc = 2*PI*fc;
      a1 = 1/Q;
@@ -188,7 +190,7 @@ with {
 (for the resonant lowpass)
 
 ```
-resonbp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
+setResonbp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
 with {
      wc = 2*PI*fc;
      a1 = 1/Q;
@@ -201,6 +203,8 @@ with {
 
 (for the resonant bandpass)
 
+The highpass is slightly more tricky:
+
 ```
 resonhp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
 ```
@@ -208,6 +212,8 @@ resonhp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
 (for the resonant highpass).
 
 Please, note that Q controls the bandwidth of the filter such that: `Q = fc/BW`.
+
+TODO: finish
 
 Wrap this up by plugging a broadband signal generator (e.g., sawtooth oscillator or white noise generator) to the filter. Come up with some nice mapping controlled with hardware sensors (i.e., rotary pot, etc.).
 
@@ -239,6 +245,7 @@ peak_eq(Lfx,fx,B) = tf2s(1,b1s,1,a1s,1,wx) with {
 where the definition of `tf2s` (direct-form 2 biquadratic filter operating the bilinear transform) can be found above. `Lfx` controls the level of the filter in dB (0 for no filtering, negative value for band reduction, and positive value for band amplification). `fx` is the center frequency, `B` the bandwidth in Hz.
 
 Implement this filter and test it the same way as you did for the resonant lowpass/bandpass/highpass.
+
 
 ### Browsing Through the Teensy Audio Library Examples
 

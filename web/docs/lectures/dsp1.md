@@ -1,6 +1,6 @@
-# Lecture 6: Audio Processing Basics I
+# Audio Processing Basics I
 
-This lecture and [the following one](lecture7.md) present a selection of audio processing and synthesis algorithms. It is in no way comprehensive: the goal is just to give you a sense of what's out there.
+This lecture and [the following one](dsp2.md) present a selection of audio processing and synthesis algorithms. It is in no way comprehensive: the goal is just to give you a sense of what's out there.
 
 All these algorithms have been extensively used during the second half of the twentieth century by musicians and artists, especially within the computer music community.
 
@@ -148,6 +148,7 @@ An LFO is an oscillator whose frequency is below the human hearing range (20 Hz)
 
 Modify the [crazy-saw example](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-saw) so that notes are played slower (1 per second) and that some vibrato is added to the generated sound.
 
+<!--
 **Solution:**
 
 In `MyDsp.h`:
@@ -198,12 +199,13 @@ for (int i = 0; i < AUDIO_BLOCK_SAMPLES; i++) {
   sawtooth.setFrequency(freq*(1 + LFO.tick()*0.1));
   float currentSample = echo.tick(sawtooth.tick()*2 - 1)*0.5;
 ```
-
+-->
 
 ### Towards the DX7
 
 The DX7 carried out frequency modulation over a total of six oscillators that could be patched in [different ways](https://static.righto.com/images/dx7-alg/algorithms-w800.jpg). So FM is not limited to two oscillators... Try to implement an FM synthesizer involving 3 oscillators instead of one. They should be connected in series: 3 -> 2 -> 1.
 
+<!--
 **Solution:**
 
 (non-exhaustive)
@@ -224,6 +226,7 @@ float Fm::tick(){
 ```
 
 And more exhaustive solution is provided in [`fm3` here](lecture6/fm3.zip).
+-->
 
 ### Smoothing
 
@@ -235,6 +238,7 @@ where \(s\) is the value of the pole and is typically set to 0.999 for optimal r
 
 Modify the [crazy-saw](https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-saw) example by "smoothing" the value of the frequency parameter by implementing the filter above with \(s=0.999\). Then slow down the rate at which frequency is being changed so that only two new values are generated per second. The result should sound quite funny :).
 
+<!--
 **Solution:**
 
 In addition to `Smooth.cpp` and `Smooth.h`, in `Phasor.h`:
@@ -255,6 +259,7 @@ float Phasor::tick(){
   return currentSample;
 }
 ```
+-->
 
 ### Smoothing Potentiometer Values
 

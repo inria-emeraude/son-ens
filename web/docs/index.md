@@ -26,21 +26,27 @@ After this period, various project ideas are suggested to students. Students wor
 
 ## Requirements
 
-* Installing Teensyduino as explained in [Lecture 1](lectures/lecture1.md).
+* Bring your own computer for every class (including the first one).
+* Installing Teensyduino as explained in [Lecture 1](lectures/setup.md).
 
 ## Course Overview
 
-* **Lecture 1: [Course Introduction and Programming Environment Setup](lectures/lecture1.md)**
-* **Lecture 2: [Audio Signal Processing Fundamentals](lectures/lecture2.md)** 
-* **Lecture 3: [Digital Audio Systems Architectures and Audio Callback](lectures/lecture3.md)** 
-* **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/lecture4.md)**
-* **Lecture 5: Introduction to Faust (Yann Orlarey)** 
-* **Lecture 6: [Audio Processing Basics I](lectures/lecture6.md)**
-* **Embedded 1: [Embedded basics: interrupts](lectures/embedded1.md)** 
-* **Embedded 2: [Embedded basics: embedded OS](lectures/embedded2.md)**
-* **Lecture 7: [Audio Processing Basics II](lectures/lecture7.md)** 
-* **Lecture 8: [Faust on the Teensy and Advanced Control](lectures/lecture8.md)** 
+* **Lecture 1: [Course Introduction and Programming Environment Setup](lectures/setup.md)**
+* **Lecture 2: [Audio Signal Processing Fundamentals](lectures/audio-dsp.md)** 
+* **Lecture 3: [Digital Audio Systems Architectures and Audio Callback](lectures/audio-sys.md)** 
+* **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/control.md)**
+* **Lecture 5: [Audio Processing Basics I](lectures/dsp1.md)** 
+* **Lecture 6: [Embedded basics: interrupts](lectures/embedded1.md)** 
+* **Lecture 7: [Embedded basics: embedded OS](lectures/embedded2.md)**
+* **Lecture 8: [Audio Processing Basics II](lectures/dsp2.md)**
+* **Lecture 9: [Introduction to Faust](lectures/faust.md)**
+* **Lecture 10: [Faust on the Teensy and Advanced Control](lectures/faust-teensy.md)**
+* **Lecture 11: [Some Other Useful Things to Know](lectures/useful.md)**
 * **Independent work on Projects** 
 
-* **Final Presentations (G1 + G2)** 11/11 2025 and 14/11 2025
+* **Final Presentations:** Nov. 14, 2025
 
+## Evaluation
+
+* CC: 50%
+* Final Project: 50%

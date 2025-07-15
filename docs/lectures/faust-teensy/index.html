@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://inria-emeraude.github.io/son-ens/lectures/lecture8/">
+        <link rel="canonical" href="https://inria-emeraude.github.io/son-ens/lectures/faust-teensy/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title> 10: Faust on the Teensy and Advanced Control  - SON @ ENS Lyon</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -40,39 +40,39 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../lecture1/" class="dropdown-item"> 1: Programming Environment Setup </a>
+    <a href="../setup/" class="dropdown-item"> 1: Programming Environment Setup </a>
 </li>
                                     
 <li>
-    <a href="../lecture2/" class="dropdown-item"> 2: Audio Signal Processing Fundamentals </a>
+    <a href="../audio-dsp/" class="dropdown-item"> 2: Audio Signal Processing Fundamentals </a>
 </li>
                                     
 <li>
-    <a href="../lecture3/" class="dropdown-item"> 3: Digital Audio Systems Architectures and Audio Callback </a>
+    <a href="../audio-sys/" class="dropdown-item"> 3: Digital Audio Systems Architectures and Audio Callback </a>
 </li>
                                     
 <li>
-    <a href="../lecture4/" class="dropdown-item"> 4: Hardware Control and Audio Codec Configuration </a>
+    <a href="../control/" class="dropdown-item"> 4: Hardware Control and Audio Codec Configuration </a>
 </li>
                                     
 <li>
-    <a href="../lecture6/" class="dropdown-item"> 5: Audio Processing Basics I </a>
+    <a href="../dsp1/" class="dropdown-item"> 5: Audio Processing Basics I </a>
 </li>
                                     
 <li>
-    <a href="../embedded1/" class="dropdown-item"> 6: Embedded basics: interrupts </a>
+    <a href="../embedded1/" class="dropdown-item"> 6: Embedded Basics: Interrupts </a>
 </li>
                                     
 <li>
-    <a href="../embedded2/" class="dropdown-item"> 7: Embedded basics: embedded OS </a>
+    <a href="../embedded2/" class="dropdown-item"> 7: Embedded Basics: Embedded OS </a>
 </li>
                                     
 <li>
-    <a href="../lecture7/" class="dropdown-item"> 8: Audio Processing Basics II </a>
+    <a href="../dsp2/" class="dropdown-item"> 8: Audio Processing Basics II </a>
 </li>
                                     
 <li>
-    <a href="../lecture5/" class="dropdown-item"> 9: Introduction to Faust </a>
+    <a href="../faust/" class="dropdown-item"> 9: Introduction to Faust </a>
 </li>
                                     
 <li>
@@ -80,7 +80,7 @@
 </li>
                                     
 <li>
-    <a href="../lecture9/" class="dropdown-item"> 11: Some Other Usefull Things to Know </a>
+    <a href="../useful/" class="dropdown-item"> 11: Some Other Useful Things to Know </a>
 </li>
                                 </ul>
                             </li>
@@ -99,12 +99,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../lecture5/" class="nav-link">
+                                <a rel="prev" href="../faust/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../lecture9/" class="nav-link">
+                                <a rel="next" href="../useful/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -126,7 +126,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#lecture-8-faust-on-the-teensy-and-advanced-control" class="nav-link">Lecture 8: Faust on the Teensy and Advanced Control</a>
+            <li class="nav-item" data-bs-level="1"><a href="#faust-on-the-teensy-and-advanced-control" class="nav-link">Faust on the Teensy and Advanced Control</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#generating-and-using-a-faust-c-object" class="nav-link">Generating and Using a Faust C++ Object</a>
               <ul class="nav flex-column">
@@ -163,7 +163,7 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="lecture-8-faust-on-the-teensy-and-advanced-control">Lecture 8: Faust on the Teensy and Advanced Control</h1>
+<h1 id="faust-on-the-teensy-and-advanced-control">Faust on the Teensy and Advanced Control</h1>
 <h2 id="generating-and-using-a-faust-c-object">Generating and Using a Faust C++ Object</h2>
 <p><strong>In order to run the examples in this lecture, you should install the Faust distribution on your system from the <a href="https://github.com/grame-cncm/faust">Faust Git Repository</a>.</strong></p>
 <p>At the most fundamental level, the Faust compiler is a command line tool translating a Faust DSP object into C++ code. For example, assuming that Faust is properly installed on your system, given the following simple Faust program implementing a filtered sawtooth wave oscillator (<a href="https://github.com/inria-emeraude/son/blob/main/faust/FaustSynth.dsp"><code>FaustSynth.dsp</code></a>):</p>

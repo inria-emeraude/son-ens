@@ -1,4 +1,4 @@
-# Lecture 3: Digital Audio Systems Architectures and Audio Callback
+# Digital Audio Systems Architectures and Audio Callback
 
 By the end of this lecture, you should be able to produce sound with your Teensy and have a basic understanding of the software and hardware architecture of embedded audio systems.
 
@@ -14,7 +14,7 @@ The format of audio samples depends on the hardware configuration of the system.
 
 ## Architecture of Embedded Audio Systems Such as the Teensy
 
-In embedded audio systems, the component implementing the audio ADC and DAC is called an "Audio Codec." This name is slightly ambiguous because it is also used in the context of audio compression (e.g., mp3) to designate a totally different concept. In the case of the Teensy kits that are provided to you as part of this class, the audio codec we use is an SGTL5000. It is mounted on a shield/sister board that has the same form factor as the Teensy. Audio samples are sent and received between the Cortex M7 and the audio codec using the i2s protocol (additional information on how this kind of system works will be provided in [Lecture 4](lecture4.md)). As a microcontroller, the Cortex M7 has its own analog inputs which can be used to retrieve sensor datas (e.g., potentiometers, etc.). These analog inputs cannot be used for audio because of their limited precision and sampling rate. We'll briefly show in [Lecture 4](lecture4.md) how these analog inputs can be used to use sensors to control audio algorithms running on the Teensy.
+In embedded audio systems, the component implementing the audio ADC and DAC is called an "Audio Codec." This name is slightly ambiguous because it is also used in the context of audio compression (e.g., mp3) to designate a totally different concept. In the case of the Teensy kits that are provided to you as part of this class, the audio codec we use is an SGTL5000. It is mounted on a shield/sister board that has the same form factor as the Teensy. Audio samples are sent and received between the Cortex M7 and the audio codec using the i2s protocol. As a microcontroller, the Cortex M7 has its own analog inputs which can be used to retrieve sensor datas (e.g., potentiometers, etc.). These analog inputs cannot be used for audio because of their limited precision and sampling rate. We'll briefly show in [this lecture about control](control.md) how these analog inputs can be used to use sensors to control audio algorithms running on the Teensy.
 
 <figure>
 <img src="img/teensy-diagram.jpg" class="mx-auto d-block" width="70%">
@@ -144,7 +144,7 @@ float Sine::tick(){
 
 ## Exercises
 
-### Looping Through a Small Tune: Making a Music Box
+### Looping Through a Small Tune
 
 In the world of music technology, musical notes are usually represented by [MIDI numbers](https://djip.co/blog/logic-studio-9-midi-note-numbers). In MIDI, each pitch of the chromatic scale has a number between 0 and 127 associated to it: <https://djip.co/blog/logic-studio-9-midi-note-numbers>
 
@@ -158,6 +158,7 @@ Write a small tune/song looping through at least 5 notes and play it with the `c
 
 **Hint:** For that, you'll probably have to replace the `myDsp.setFreq(random(50,1000));` line of of `crazy-sine.ino` by something else.
 
+<!--
 **Solution:**
 
 In `crazy-sine.ino`:
@@ -191,6 +192,7 @@ void loop() {
   delay(500);
 }
 ```
+-->
 
 ### Basic Additive Synthesis
 
@@ -208,6 +210,7 @@ but the problem with that option is that memory will be allocated twice for the 
 
 **Hint:** Beware of clipping! Adding two sine waves together even though they don't have the same frequency will likely produce a signal whose range exceeds {-1;1}: you should take that into account for your final product. 
 
+<!--
 **Solution:**
 
 In `Sine.cpp`:
@@ -221,6 +224,7 @@ float Sine::tick(){
 ```
 
 Bonus solution: [`Additive.cpp`](lecture3/Additive.cpp) and [`Additive.h`](lecture3/Additive.h).
+-->
 
 ### Stereo Echo
 
@@ -234,10 +238,12 @@ float currentSampleR = echo1.tick(sineSample)*0.5;
 
 **Hint:** Beware of memory allocation again! Make sure that the maxim delay of your echo (on the 2 parameters of the class constructor) doesn't exceed 10000 for now for both instances of the echo. 
 
+<!--
 **Solution:**
 
 * Basic solution: [`crazy_sine_stereo.zip`](lecture3/crazy_sine_stereo.zip)
 * Solution with dynamic memory allocation: [`crazy_sine_stereo_dyn.zip`](lecture3/crazy_sine_stereo_dyn.zip)
+-->
 
 <!--
 **Solution:**

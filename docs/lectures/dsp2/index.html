@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://inria-emeraude.github.io/son-ens/lectures/lecture7/">
+        <link rel="canonical" href="https://inria-emeraude.github.io/son-ens/lectures/dsp2/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title> 8: Audio Processing Basics II  - SON @ ENS Lyon</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -40,31 +40,31 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../lecture1/" class="dropdown-item"> 1: Programming Environment Setup </a>
+    <a href="../setup/" class="dropdown-item"> 1: Programming Environment Setup </a>
 </li>
                                     
 <li>
-    <a href="../lecture2/" class="dropdown-item"> 2: Audio Signal Processing Fundamentals </a>
+    <a href="../audio-dsp/" class="dropdown-item"> 2: Audio Signal Processing Fundamentals </a>
 </li>
                                     
 <li>
-    <a href="../lecture3/" class="dropdown-item"> 3: Digital Audio Systems Architectures and Audio Callback </a>
+    <a href="../audio-sys/" class="dropdown-item"> 3: Digital Audio Systems Architectures and Audio Callback </a>
 </li>
                                     
 <li>
-    <a href="../lecture4/" class="dropdown-item"> 4: Hardware Control and Audio Codec Configuration </a>
+    <a href="../control/" class="dropdown-item"> 4: Hardware Control and Audio Codec Configuration </a>
 </li>
                                     
 <li>
-    <a href="../lecture6/" class="dropdown-item"> 5: Audio Processing Basics I </a>
+    <a href="../dsp1/" class="dropdown-item"> 5: Audio Processing Basics I </a>
 </li>
                                     
 <li>
-    <a href="../embedded1/" class="dropdown-item"> 6: Embedded basics: interrupts </a>
+    <a href="../embedded1/" class="dropdown-item"> 6: Embedded Basics: Interrupts </a>
 </li>
                                     
 <li>
-    <a href="../embedded2/" class="dropdown-item"> 7: Embedded basics: embedded OS </a>
+    <a href="../embedded2/" class="dropdown-item"> 7: Embedded Basics: Embedded OS </a>
 </li>
                                     
 <li>
@@ -72,15 +72,15 @@
 </li>
                                     
 <li>
-    <a href="../lecture5/" class="dropdown-item"> 9: Introduction to Faust </a>
+    <a href="../faust/" class="dropdown-item"> 9: Introduction to Faust </a>
 </li>
                                     
 <li>
-    <a href="../lecture8/" class="dropdown-item"> 10: Faust on the Teensy and Advanced Control </a>
+    <a href="../faust-teensy/" class="dropdown-item"> 10: Faust on the Teensy and Advanced Control </a>
 </li>
                                     
 <li>
-    <a href="../lecture9/" class="dropdown-item"> 11: Some Other Usefull Things to Know </a>
+    <a href="../useful/" class="dropdown-item"> 11: Some Other Useful Things to Know </a>
 </li>
                                 </ul>
                             </li>
@@ -104,7 +104,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../lecture5/" class="nav-link">
+                                <a rel="next" href="../faust/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -126,7 +126,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#lecture-7-audio-processing-basics-ii" class="nav-link">Lecture 7: Audio Processing Basics II</a>
+            <li class="nav-item" data-bs-level="1"><a href="#audio-processing-basics-ii" class="nav-link">Audio Processing Basics II</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#harmonic-distortion-rock-on" class="nav-link">Harmonic Distortion: Rock On!</a>
               <ul class="nav flex-column">
@@ -144,9 +144,17 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#exercises" class="nav-link">Exercises</a>
+            <li class="nav-item" data-bs-level="2"><a href="#take-home-exam-cc" class="nav-link">Take Home Exam (CC)</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="3"><a href="#making-resonant-lowpass-bandpass-and-highpass" class="nav-link">Making Resonant Lowpass, Bandpass and Highpass</a>
+            <li class="nav-item" data-bs-level="3"><a href="#biquad-filter-todo-pt" class="nav-link">Biquad Filter (TODO Pt)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#implementing-bilinear-tranform-todo-pt" class="nav-link">Implementing Bilinear Tranform (TODO Pt)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#making-resonant-lowpass-bandpass-and-highpass-todo-pt" class="nav-link">Making Resonant Lowpass, Bandpass and Highpass (TODO Pt)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -167,7 +175,7 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="lecture-7-audio-processing-basics-ii">Lecture 7: Audio Processing Basics II</h1>
+<h1 id="audio-processing-basics-ii">Audio Processing Basics II</h1>
 <h2 id="harmonic-distortion-rock-on">Harmonic Distortion: Rock On!</h2>
 <p>Distortion is one of the most common electric guitar effect. It consists of over driving a signal by increasing its gain to "square" the extremities of its waveform. This results in the creation of lots of harmonics, producing very "rich" sounds. Overdrive is easily achievable with an analog electronic circuit and "sharp edges" in the waveform are rounded thanks to the tolerance of the electronic components. In the digital world, things are slightly more complicated since clipping will happen resulting in a very dirty sound with potentially lots of aliasing. One way to solve this problem is to use a "cubic function" which will round the edges of the signal above a certain amplitude:</p>
 <p>
@@ -282,11 +290,12 @@ float Distortion::tick(float input){
 <p>Note that this algorithm could be improved in many ways. In particular, the fact that the delay length is currently expressed as an integer can result in frequency mismatches at high frequencies. In other words, our current string is out of tune. This could be fixed using <a href="https://ccrma.stanford.edu/~jos/Interpolation/Welcome.html">fractional delay</a>.</p>
 <p>In practice, the Karplus-Strong algorithm is not a physical model per se and is just a simplification of the <a href="https://ccrma.stanford.edu/~jos/pasp/Digital_Waveguide_Models.html">ideal string wave equation</a>. More advanced signal models can be implemented using waveguides.</p>
 <p>Waveguide physical modeling has been extensively used in modern synthesizers to synthesize the sound of acoustic instruments. Julius O. Smith (Stanford professor) is the father of waveguide physical modeling. </p>
-<h2 id="exercises">Exercises</h2>
-<h3 id="making-resonant-lowpass-bandpass-and-highpass">Making Resonant Lowpass, Bandpass and Highpass</h3>
-<p>This short tutorial demonstrates how to implement a series of filters that can be configured as resonant lowpass, bandpass, and highpasses.</p>
-<p>For this, you will first need to implement a biquad filter: <a href="https://en.wikipedia.org/wiki/Digital_biquad_filter">https://en.wikipedia.org/wiki/Digital_biquad_filter</a> (direct form 2 is preferred). You will then have to format the coefficients of that filter using the <a href="https://en.wikipedia.org/wiki/Bilinear_transform">bilinear transform</a> such that:</p>
-<pre><code>tf2s(b2,b1,b0,a1,a0,w1) = tf2(b0d,b1d,b2d,a1d,a2d)
+<h2 id="take-home-exam-cc">Take Home Exam (CC)</h2>
+<h3 id="biquad-filter-todo-pt">Biquad Filter (TODO Pt)</h3>
+<p>Design a C++ class implementing a biquad filter (direct form 2): <a href="https://en.wikipedia.org/wiki/Digital_biquad_filter">https://en.wikipedia.org/wiki/Digital_biquad_filter</a>. A single method of this class should allow you to configure the filter coefficients (e.g., <code>setCoefs(a1,a2,b0,b1,b2)</code>).</p>
+<h3 id="implementing-bilinear-tranform-todo-pt">Implementing Bilinear Tranform (TODO Pt)</h3>
+<p>Implement a method in the previous class formating the filter coefficients using the <a href="https://en.wikipedia.org/wiki/Bilinear_transform">bilinear transform</a> such that:</p>
+<pre><code>setBilinearCoefs(b2,b1,b0,a1,a0,w1) = setCoefs(b0d,b1d,b2d,a1d,a2d)
 with {
   c   = 1/tan(w1*0.5/SR);
   csq = c*c;
@@ -298,9 +307,9 @@ with {
   a2d = (a0 - a1*c + csq)/d;
 };
 </code></pre>
-<p>where <code>tf2</code> is a direct form 2 biquad and SR the sampling rate.</p>
-<p>Finally, you'll have to format the coefficients of the <code>tf2s</code> filter such that:</p>
-<pre><code>resonlp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
+<h3 id="making-resonant-lowpass-bandpass-and-highpass-todo-pt">Making Resonant Lowpass, Bandpass and Highpass (TODO Pt)</h3>
+<p>Add methods to your biquad class to configure the filter as a lowpass, highpass, or bandpass (one method for each) such that:</p>
+<pre><code>setResonlp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
 with {
      wc = 2*PI*fc;
      a1 = 1/Q;
@@ -311,7 +320,7 @@ with {
 };
 </code></pre>
 <p>(for the resonant lowpass)</p>
-<pre><code>resonbp(fc,Q,gain) = tf2s(b2,b1,b0,a1,a0,wc)
+<pre><code>setResonbp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
 with {
      wc = 2*PI*fc;
      a1 = 1/Q;
@@ -322,10 +331,12 @@ with {
 };
 </code></pre>
 <p>(for the resonant bandpass)</p>
+<p>The highpass is slightly more tricky:</p>
 <pre><code>resonhp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
 </code></pre>
 <p>(for the resonant highpass).</p>
 <p>Please, note that Q controls the bandwidth of the filter such that: <code>Q = fc/BW</code>.</p>
+<p>TODO: finish</p>
 <p>Wrap this up by plugging a broadband signal generator (e.g., sawtooth oscillator or white noise generator) to the filter. Come up with some nice mapping controlled with hardware sensors (i.e., rotary pot, etc.).</p>
 <p>Test your filter by changing dynamically the cutoff frequency of the filter using a potentiometer, for example.</p>
 <h3 id="peak-equalizers">Peak Equalizers</h3>

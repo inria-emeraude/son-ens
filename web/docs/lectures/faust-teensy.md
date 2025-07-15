@@ -1,4 +1,4 @@
-# Lecture 8: Faust on the Teensy and Advanced Control
+# Faust on the Teensy and Advanced Control
 
 ## Generating and Using a Faust C++ Object
 
