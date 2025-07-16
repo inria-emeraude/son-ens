@@ -146,23 +146,27 @@
             </li>
             <li class="nav-item" data-bs-level="2"><a href="#take-home-exam-cc" class="nav-link">Take Home Exam (CC)</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="3"><a href="#biquad-filter-todo-pt" class="nav-link">Biquad Filter (TODO Pt)</a>
+            <li class="nav-item" data-bs-level="3"><a href="#biquad-filter-6-pt" class="nav-link">Biquad Filter (6 pt)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="3"><a href="#implementing-bilinear-tranform-todo-pt" class="nav-link">Implementing Bilinear Tranform (TODO Pt)</a>
+            <li class="nav-item" data-bs-level="3"><a href="#implementing-the-bilinear-tranform-2-pt" class="nav-link">Implementing the Bilinear Tranform (2 pt)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="3"><a href="#making-resonant-lowpass-bandpass-and-highpass-todo-pt" class="nav-link">Making Resonant Lowpass, Bandpass and Highpass (TODO Pt)</a>
+            <li class="nav-item" data-bs-level="3"><a href="#making-resonant-lowpass-bandpass-and-highpass-4-pt" class="nav-link">Making Resonant Lowpass, Bandpass and Highpass (4 pt)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="3"><a href="#peak-equalizers" class="nav-link">Peak Equalizers</a>
+            <li class="nav-item" data-bs-level="3"><a href="#peak-equalizers-filter-2-pt" class="nav-link">Peak Equalizers Filter (2 pt)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="3"><a href="#browsing-through-the-teensy-audio-library-examples" class="nav-link">Browsing Through the Teensy Audio Library Examples</a>
+            <li class="nav-item" data-bs-level="3"><a href="#testing-3-pt" class="nav-link">Testing (3 pt)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#peak-equalizers-effect-3-pt" class="nav-link">Peak Equalizers Effect (3 pt)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -291,9 +295,10 @@ float Distortion::tick(float input){
 <p>In practice, the Karplus-Strong algorithm is not a physical model per se and is just a simplification of the <a href="https://ccrma.stanford.edu/~jos/pasp/Digital_Waveguide_Models.html">ideal string wave equation</a>. More advanced signal models can be implemented using waveguides.</p>
 <p>Waveguide physical modeling has been extensively used in modern synthesizers to synthesize the sound of acoustic instruments. Julius O. Smith (Stanford professor) is the father of waveguide physical modeling. </p>
 <h2 id="take-home-exam-cc">Take Home Exam (CC)</h2>
-<h3 id="biquad-filter-todo-pt">Biquad Filter (TODO Pt)</h3>
-<p>Design a C++ class implementing a biquad filter (direct form 2): <a href="https://en.wikipedia.org/wiki/Digital_biquad_filter">https://en.wikipedia.org/wiki/Digital_biquad_filter</a>. A single method of this class should allow you to configure the filter coefficients (e.g., <code>setCoefs(a1,a2,b0,b1,b2)</code>).</p>
-<h3 id="implementing-bilinear-tranform-todo-pt">Implementing Bilinear Tranform (TODO Pt)</h3>
+<p>The goal of this take home exam is to explore the implementation and the use of more advanced filters than the ones studied in class. The deliverable for this exam are two zip files containing an Arduino project each. The first project should contain a test program for the lowpass, highpass, bandpass, and peak equalizer (see <code>Testing</code> below). The second project should contain a test program for the peak equalizer audio effect (see <code>Peak Equalizer Effect</code> below). Both .zip files should be sent out to: romain_dot_michon_at_inria_dot_fr.</p>
+<h3 id="biquad-filter-6-pt">Biquad Filter (6 pt)</h3>
+<p>Design a C++ class implementing a biquad filter (direct form 2): <a href="https://en.wikipedia.org/wiki/Digital_biquad_filter">https://en.wikipedia.org/wiki/Digital_biquad_filter</a>. That class could be called <code>Biquad</code>, for example. A single method of this class should allow you to configure the filter coefficients (e.g., <code>setCoefs(a1,a2,b0,b1,b2)</code>).</p>
+<h3 id="implementing-the-bilinear-tranform-2-pt">Implementing the Bilinear Tranform (2 pt)</h3>
 <p>Implement a method in the previous class formating the filter coefficients using the <a href="https://en.wikipedia.org/wiki/Bilinear_transform">bilinear transform</a> such that:</p>
 <pre><code>setBilinearCoefs(b2,b1,b0,a1,a0,w1) = setCoefs(b0d,b1d,b2d,a1d,a2d)
 with {
@@ -307,9 +312,10 @@ with {
   a2d = (a0 - a1*c + csq)/d;
 };
 </code></pre>
-<h3 id="making-resonant-lowpass-bandpass-and-highpass-todo-pt">Making Resonant Lowpass, Bandpass and Highpass (TODO Pt)</h3>
+<p>We're just giving the "magic recipe" here, if you want to spend time understanding how the bilinear transform works, feel free to do so but it won't help you for the rest of this exam :).</p>
+<h3 id="making-resonant-lowpass-bandpass-and-highpass-4-pt">Making Resonant Lowpass, Bandpass and Highpass (4 pt)</h3>
 <p>Add methods to your biquad class to configure the filter as a lowpass, highpass, or bandpass (one method for each) such that:</p>
-<pre><code>setResonlp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
+<pre><code>setResonLp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
 with {
      wc = 2*PI*fc;
      a1 = 1/Q;
@@ -320,7 +326,7 @@ with {
 };
 </code></pre>
 <p>(for the resonant lowpass)</p>
-<pre><code>setResonbp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
+<pre><code>setResonBp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
 with {
      wc = 2*PI*fc;
      a1 = 1/Q;
@@ -332,16 +338,13 @@ with {
 </code></pre>
 <p>(for the resonant bandpass)</p>
 <p>The highpass is slightly more tricky:</p>
-<pre><code>resonhp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
+<pre><code>resonHp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
 </code></pre>
 <p>(for the resonant highpass).</p>
 <p>Please, note that Q controls the bandwidth of the filter such that: <code>Q = fc/BW</code>.</p>
-<p>TODO: finish</p>
-<p>Wrap this up by plugging a broadband signal generator (e.g., sawtooth oscillator or white noise generator) to the filter. Come up with some nice mapping controlled with hardware sensors (i.e., rotary pot, etc.).</p>
-<p>Test your filter by changing dynamically the cutoff frequency of the filter using a potentiometer, for example.</p>
-<h3 id="peak-equalizers">Peak Equalizers</h3>
+<h3 id="peak-equalizers-filter-2-pt">Peak Equalizers Filter (2 pt)</h3>
 <p>Peak equalizers are yet another kind of filters allowing to reduce or increase some bands in the spectrum of a sound. A peak equalizer can take the following form:</p>
-<pre><code>peak_eq(Lfx,fx,B) = tf2s(1,b1s,1,a1s,1,wx) with {
+<pre><code>setPeakEq(Lfx,fx,B) = setBilinearCoefs(1,b1s,1,a1s,1,wx) with {
   T = 1.0/SR;
   Bw = B*T/sin(wx*T); // prewarp s-bandwidth for more accuracy in z-plane
   a1 = PI*Bw;
@@ -359,9 +362,19 @@ with {
 };
 </code></pre>
 <p>where the definition of <code>tf2s</code> (direct-form 2 biquadratic filter operating the bilinear transform) can be found above. <code>Lfx</code> controls the level of the filter in dB (0 for no filtering, negative value for band reduction, and positive value for band amplification). <code>fx</code> is the center frequency, <code>B</code> the bandwidth in Hz.</p>
-<p>Implement this filter and test it the same way as you did for the resonant lowpass/bandpass/highpass.</p>
-<h3 id="browsing-through-the-teensy-audio-library-examples">Browsing Through the Teensy Audio Library Examples</h3>
-<p>The Teensy audio library comes with a series of example programs which are pre-installed with Teensyduino in <code>File/Examples/Teensy/Audio</code> (in the Teensyduino interface). Browse through the examples to get a sense of what;s out there.</p></div>
+<p>Add another method to your biquad class allowing you to configure the filter as a peak equalizer.</p>
+<h3 id="testing-3-pt">Testing (3 pt)</h3>
+<p>Test your different filter configurations (lowpass, highpass, bandpass, and peak equalizer) by plugging a white noise generator to your filter and by modulating their frequency parameter using a potentiometer. To make things "more obvious," set a narrow bandwidth for your filter. For example:</p>
+<pre><code>setResonLp(freqPot,10,0.5)
+setResonHp(freqPot,10,0.5)
+setResonBp(freqPot,10,0.5)
+setPeakEq(10,freqPot,100)
+</code></pre>
+<p>Connect the output of your filter to a frequency analyzer. Use <code>File/Examples/Audio/Analysis/FFT</code> in the Arduino IDE as a starting point for that. Use a button to switch between the different filter configurations (in a loop). </p>
+<p>This testing program constitute your first deliverable for this exam. Make sure that your code is reasonably well written and documented (in English).</p>
+<h3 id="peak-equalizers-effect-3-pt">Peak Equalizers Effect (3 pt)</h3>
+<p>Create a new PeakEqualizer class putting five peak equalizer filters in parallel. Use a potentiometer to control the frequency of a single filter and another potentiometer to control its level in dB. A button should then allow you to select which filter your controlling. Pressing the button once switches to the next filter (in a loop). </p>
+<p>This testing program constitute your second deliverable for this exam. Make sure that your code is reasonably well written and documented (in English).</p></div>
             </div>
         </div>
 

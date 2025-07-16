@@ -149,11 +149,13 @@ Waveguide physical modeling has been extensively used in modern synthesizers to 
 
 ## Take Home Exam (CC)
 
-### Biquad Filter (TODO Pt)
+The goal of this take home exam is to explore the implementation and the use of more advanced filters than the ones studied in class. The deliverable for this exam are two zip files containing an Arduino project each. The first project should contain a test program for the lowpass, highpass, bandpass, and peak equalizer (see `Testing` below). The second project should contain a test program for the peak equalizer audio effect (see `Peak Equalizer Effect` below). Both .zip files should be sent out to: romain_dot_michon_at_inria_dot_fr.
 
-Design a C++ class implementing a biquad filter (direct form 2): [https://en.wikipedia.org/wiki/Digital_biquad_filter](https://en.wikipedia.org/wiki/Digital_biquad_filter). A single method of this class should allow you to configure the filter coefficients (e.g., `setCoefs(a1,a2,b0,b1,b2)`).
+### Biquad Filter (6 pt)
 
-### Implementing Bilinear Tranform (TODO Pt)
+Design a C++ class implementing a biquad filter (direct form 2): [https://en.wikipedia.org/wiki/Digital_biquad_filter](https://en.wikipedia.org/wiki/Digital_biquad_filter). That class could be called `Biquad`, for example. A single method of this class should allow you to configure the filter coefficients (e.g., `setCoefs(a1,a2,b0,b1,b2)`).
+
+### Implementing the Bilinear Tranform (2 pt)
 
 Implement a method in the previous class formating the filter coefficients using the [bilinear transform](https://en.wikipedia.org/wiki/Bilinear_transform) such that:
 
@@ -171,12 +173,14 @@ with {
 };
 ```
 
-### Making Resonant Lowpass, Bandpass and Highpass (TODO Pt)
+We're just giving the "magic recipe" here, if you want to spend time understanding how the bilinear transform works, feel free to do so but it won't help you for the rest of this exam :).
+
+### Making Resonant Lowpass, Bandpass and Highpass (4 pt)
 
 Add methods to your biquad class to configure the filter as a lowpass, highpass, or bandpass (one method for each) such that:
 
 ```
-setResonlp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
+setResonLp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
 with {
      wc = 2*PI*fc;
      a1 = 1/Q;
@@ -190,7 +194,7 @@ with {
 (for the resonant lowpass)
 
 ```
-setResonbp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
+setResonBp(fc,Q,gain) = setBilinearCoefs(b2,b1,b0,a1,a0,wc)
 with {
      wc = 2*PI*fc;
      a1 = 1/Q;
@@ -206,25 +210,19 @@ with {
 The highpass is slightly more tricky:
 
 ```
-resonhp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
+resonHp(fc,Q,gain,x) = gain*x-resonlp(fc,Q,gain,x);
 ```
 
 (for the resonant highpass).
 
 Please, note that Q controls the bandwidth of the filter such that: `Q = fc/BW`.
 
-TODO: finish
-
-Wrap this up by plugging a broadband signal generator (e.g., sawtooth oscillator or white noise generator) to the filter. Come up with some nice mapping controlled with hardware sensors (i.e., rotary pot, etc.).
-
-Test your filter by changing dynamically the cutoff frequency of the filter using a potentiometer, for example.
-
-### Peak Equalizers
+### Peak Equalizers Filter (2 pt)
 
 Peak equalizers are yet another kind of filters allowing to reduce or increase some bands in the spectrum of a sound. A peak equalizer can take the following form:
 
 ```
-peak_eq(Lfx,fx,B) = tf2s(1,b1s,1,a1s,1,wx) with {
+setPeakEq(Lfx,fx,B) = setBilinearCoefs(1,b1s,1,a1s,1,wx) with {
   T = 1.0/SR;
   Bw = B*T/sin(wx*T); // prewarp s-bandwidth for more accuracy in z-plane
   a1 = PI*Bw;
@@ -244,9 +242,25 @@ peak_eq(Lfx,fx,B) = tf2s(1,b1s,1,a1s,1,wx) with {
 
 where the definition of `tf2s` (direct-form 2 biquadratic filter operating the bilinear transform) can be found above. `Lfx` controls the level of the filter in dB (0 for no filtering, negative value for band reduction, and positive value for band amplification). `fx` is the center frequency, `B` the bandwidth in Hz.
 
-Implement this filter and test it the same way as you did for the resonant lowpass/bandpass/highpass.
+Add another method to your biquad class allowing you to configure the filter as a peak equalizer.
 
+### Testing (3 pt)
 
-### Browsing Through the Teensy Audio Library Examples
+Test your different filter configurations (lowpass, highpass, bandpass, and peak equalizer) by plugging a white noise generator to your filter and by modulating their frequency parameter using a potentiometer. To make things "more obvious," set a narrow bandwidth for your filter. For example:
 
-The Teensy audio library comes with a series of example programs which are pre-installed with Teensyduino in `File/Examples/Teensy/Audio` (in the Teensyduino interface). Browse through the examples to get a sense of what;s out there.
+```
+setResonLp(freqPot,10,0.5)
+setResonHp(freqPot,10,0.5)
+setResonBp(freqPot,10,0.5)
+setPeakEq(10,freqPot,100)
+```
+
+Connect the output of your filter to a frequency analyzer. Use `File/Examples/Audio/Analysis/FFT` in the Arduino IDE as a starting point for that. Use a button to switch between the different filter configurations (in a loop). 
+
+This testing program constitute your first deliverable for this exam. Make sure that your code is reasonably well written and documented (in English).
+
+### Peak Equalizers Effect (3 pt)
+
+Create a new PeakEqualizer class putting five peak equalizer filters in parallel. Use a potentiometer to control the frequency of a single filter and another potentiometer to control its level in dB. A button should then allow you to select which filter your controlling. Pressing the button once switches to the next filter (in a loop). 
+
+This testing program constitute your second deliverable for this exam. Make sure that your code is reasonably well written and documented (in English).

@@ -48,5 +48,5 @@ After this period, various project ideas are suggested to students. Students wor
 
 ## Evaluation
 
-* CC: 50%
+* CC: 50% (take home exam at the end of Lecture 8)
 * Final Project: 50%
