@@ -1,4 +1,4 @@
-# SON: 3TC Audio Project @ END Lyon
+# SON: 3TC Audio Project @ ENS Lyon
 
 In this course, students program an embedded system (the Teensy 4.0: <https://www.pjrc.com/store/teensy40.html>) for real-time audio signal processing applications. By doing so, they learn the basics of audio software architecture, audio signal processing in C++, and embedded system programming (C++).
 
