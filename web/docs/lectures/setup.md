@@ -110,7 +110,7 @@ Open the serial debugger by clicking on the loop on the top right corner of the 
 
 ### Running an Audio Program
 
-The course repository comes with a series of example audio programs "making sound" on the Teensy. Open <https://github.com/inria-emeraude/son/tree/main/examples/teensy/projects/crazy-sine> in the Arduino IDE and run this program on your Teensy.
+The course repository comes with a series of example audio programs "making sound" on the Teensy. Open <https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-sine> in the Arduino IDE and run this program on your Teensy.
 
 Plug your headphones to the 3.5mm Jack connector on the Audio shield and you should hear a "beautiful" music.
 
