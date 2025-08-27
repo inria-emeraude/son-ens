@@ -77,9 +77,15 @@ In this course, we will be using the [Arduino IDE with Teensyduino](https://www.
 
 The installation procedure can be found on the PJRC website (note that it slightly varies between platforms): <https://www.pjrc.com/teensy/td_download.html>
 
-After this, clone the SON GitHub repository: <https://github.com/inria-emeraude/son>
+On Linux, make sure to execute all the steps:
 
-Finally, copy the `examples/teensy/libraries/mydsp` (which contains a basic audio DSP library prepared for this course) folder from the course repo in `$ARDUINOPATH/libraries`
+- Download Arduino (zip or AppImage)
+- add repository <https://www.pjrc.com/teensy/package_teensy_index.json> as Additional boards manager URLs
+- Select Teensy 4.0 as board (Tools -> boards)
+
+After this, clone the SON GitHub repository: <https://github.com/inria-emeraude/son-ens> 
+
+Finally, copy the `examples/teensy/libraries/mydsp` (which contains a basic audio DSP library prepared for this course) folder from the course repo in `$ARDUINOPATH/libraries` where `$ARDUINO` can be seen in ``File->Preferences->Scketchbook location``
 
 ### Hello World
 
