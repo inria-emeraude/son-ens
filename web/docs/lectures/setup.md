@@ -80,8 +80,9 @@ The installation procedure can be found on the PJRC website (note that it slight
 On Linux, make sure to execute all the steps:
 
 - Download Arduino (zip or AppImage)
-- add repository <https://www.pjrc.com/teensy/package_teensy_index.json> as Additional boards manager URLs
+- add repository <https://www.pjrc.com/teensy/package_teensy_index.json> as Additional boards manager URLs, and install it in `Tools -> Board -> Board Manager`
 - Select Teensy 4.0 as board (Tools -> boards)
+- Copy (as sudo) the Linux Udev Rule file (from [here](<https://www.pjrc.com/teensy/00-teensy.rules>)) to /dev/udev/rules/
 
 After this, clone the SON GitHub repository: <https://github.com/inria-emeraude/son-ens> 
 
@@ -110,7 +111,7 @@ Open the serial debugger by clicking on the loop on the top right corner of the 
 
 ### Running an Audio Program
 
-The course repository comes with a series of example audio programs "making sound" on the Teensy. Open <https://github.com/inria-emeraude/son-ens/tree/main/examples/teensy/projects/crazy-sine> in the Arduino IDE and run this program on your Teensy.
+The course repository comes with a series of example audio programs "making sound" on the Teensy. Open ``examples/teensy/projects/crazy-sine`  from your clone of <https://github.com/inria-emeraude/son-ens> in the Arduino IDE and run this program on your Teensy.
 
 Plug your headphones to the 3.5mm Jack connector on the Audio shield and you should hear a "beautiful" music.
 
