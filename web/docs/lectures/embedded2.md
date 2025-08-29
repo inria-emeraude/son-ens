@@ -31,21 +31,23 @@ copy this ``protothreads_blink`` directory to a new ``protothreads_count`` and m
 - Increment `blink_count` at each blink
 - Print (using `Serial.print`) the value of `blink_count` in new timer callback.
  
-Use the command ``minicom -D /dev/ttyACM0`` to visualize what is send on serial port by the teensy. 
+Use the command ``minicom -D /dev/ttyACM0`` or the ``serial monitor`` to visualize what is send on serial port by the teensy. 
 
 For the moment we do not really need a new protothread, as we can assume that two calls to ``Serial.printf`` are fast enough not to perturbate audio.
 
-Imagine that we want to control our audio device using the keyboard. Receiving a caracter from the keyboard and performing the action necessary might be too long for an interrupt handle function. Hence we will add a protothread to do that. 
+Imagine that we want to control our audio device using the keyboard. Receiving a character from the keyboard and performing the action necessary might be too long because it imply a **busy wait** (i.e. check that a character has been typed before reading it). Hence we will add a protothread to do that. 
 
-## Control LED and sound with keyboard
+## Control LED and sound with your keyboard
+Try to control (i.e. activate or de-activate), sound production and led blinking from you AZERTY keybord. 
+
 copy this ``protothreads_count`` directory to a new ``protothreads_control``
 
-declare a new protothread ``static PT_THREAD(thread_receive(struct pt *pt))` that will receive characters on UART serial port for the host computer. the condition in the `PT_WAIT_UNTIL` will be `Serial.available()>0` (indicating that the receiving buffer contains some characters, see [UART teensy Documentation](https://www.pjrc.com/teensy/td_uart.html)). As soon as a character is typed, echo its ascii code. 
+declare a new protothread ``static PT_THREAD(thread_receive(struct pt *pt))` that will receive characters on UART serial port for the host computer. the condition in the `PT_WAIT_UNTIL` will be `Serial.available()>0` (indicating that the receiving buffer contains some characters, see [UART teensy Documentation](https://www.pjrc.com/teensy/td_uart.html)). As soon as a character is typed, echo its ascii code (standard "echo mode" for UART interaction).
 
 Use that mecanism to control the sound and LED:
 
-- Typing 's' will switch off/on the sound (i.e. setting ``myDsp.setFreq(0)`) 
-- Typing 'o' will switch off/on the LED blinking.
+- Typing character 's' (for "sound") will switch off/on the sound (i.e. setting ``myDsp.setFreq(0)`) 
+- Typing character 'l' (for "led") will switch off/on the LED blinking.
 
 Hint: you can switch the value of a variable `var` between 0 and 1 using the Xor operator: `var = var ^ 1;`
 
