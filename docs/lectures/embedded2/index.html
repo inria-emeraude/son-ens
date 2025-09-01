@@ -140,7 +140,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#control-led-and-sound-with-keyboard" class="nav-link">Control LED and sound with keyboard</a>
+            <li class="nav-item" data-bs-level="2"><a href="#control-led-and-sound-with-your-keyboard" class="nav-link">Control LED and sound with your keyboard</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -172,16 +172,17 @@
 <li>Increment <code>blink_count</code> at each blink</li>
 <li>Print (using <code>Serial.print</code>) the value of <code>blink_count</code> in new timer callback.</li>
 </ul>
-<p>Use the command <code>minicom -D /dev/ttyACM0</code> to visualize what is send on serial port by the teensy. </p>
+<p>Use the command <code>minicom -D /dev/ttyACM0</code> or the <code>serial monitor</code> to visualize what is send on serial port by the teensy. </p>
 <p>For the moment we do not really need a new protothread, as we can assume that two calls to <code>Serial.printf</code> are fast enough not to perturbate audio.</p>
-<p>Imagine that we want to control our audio device using the keyboard. Receiving a caracter from the keyboard and performing the action necessary might be too long for an interrupt handle function. Hence we will add a protothread to do that. </p>
-<h2 id="control-led-and-sound-with-keyboard">Control LED and sound with keyboard</h2>
+<p>Imagine that we want to control our audio device using the keyboard. Receiving a character from the keyboard and performing the action necessary might be too long because it imply a <strong>busy wait</strong> (i.e. check that a character has been typed before reading it). Hence we will add a protothread to do that. </p>
+<h2 id="control-led-and-sound-with-your-keyboard">Control LED and sound with your keyboard</h2>
+<p>Try to control (i.e. activate or de-activate), sound production and led blinking from you AZERTY keybord. </p>
 <p>copy this <code>protothreads_count</code> directory to a new <code>protothreads_control</code></p>
-<p>declare a new protothread <code>`static PT_THREAD(thread_receive(struct pt *pt))</code> that will receive characters on UART serial port for the host computer. the condition in the <code>PT_WAIT_UNTIL</code> will be <code>Serial.available()&gt;0</code> (indicating that the receiving buffer contains some characters, see <a href="https://www.pjrc.com/teensy/td_uart.html">UART teensy Documentation</a>). As soon as a character is typed, echo its ascii code. </p>
+<p>declare a new protothread <code>`static PT_THREAD(thread_receive(struct pt *pt))</code> that will receive characters on UART serial port for the host computer. the condition in the <code>PT_WAIT_UNTIL</code> will be <code>Serial.available()&gt;0</code> (indicating that the receiving buffer contains some characters, see <a href="https://www.pjrc.com/teensy/td_uart.html">UART teensy Documentation</a>). As soon as a character is typed, echo its ascii code (standard "echo mode" for UART interaction).</p>
 <p>Use that mecanism to control the sound and LED:</p>
 <ul>
-<li>Typing 's' will switch off/on the sound (i.e. setting <code>`myDsp.setFreq(0)</code>) </li>
-<li>Typing 'o' will switch off/on the LED blinking.</li>
+<li>Typing character 's' (for "sound") will switch off/on the sound (i.e. setting <code>`myDsp.setFreq(0)</code>) </li>
+<li>Typing character 'l' (for "led") will switch off/on the LED blinking.</li>
 </ul>
 <p>Hint: you can switch the value of a variable <code>var</code> between 0 and 1 using the Xor operator: <code>var = var ^ 1;</code></p>
 <p>** Solution **</p>
