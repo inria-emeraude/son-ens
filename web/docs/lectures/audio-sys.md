@@ -208,7 +208,6 @@ but the problem with that option is that memory will be allocated twice for the 
 
 **Hint:** Beware of clipping! Adding two sine waves together even though they don't have the same frequency will likely produce a signal whose range exceeds {-1;1}: you should take that into account for your final product. 
 
-<!--
 **Solution:**
 
 In `Sine.cpp`:
@@ -221,8 +220,7 @@ float Sine::tick(){
 }
 ```
 
-Bonus solution: [`Additive.cpp`](lecture3/Additive.cpp) and [`Additive.h`](lecture3/Additive.h).
--->
+Bonus solution: [`Additive.cpp`](audio-sys/Additive.cpp) and [`Additive.h`](audio-sys/Additive.h).
 
 ### Stereo Echo
 
@@ -236,12 +234,10 @@ float currentSampleR = echo1.tick(sineSample)*0.5;
 
 **Hint:** Beware of memory allocation again! Make sure that the maxim delay of your echo (on the 2 parameters of the class constructor) doesn't exceed 10000 for now for both instances of the echo. 
 
-<!--
 **Solution:**
 
-* Basic solution: [`crazy_sine_stereo.zip`](lecture3/crazy_sine_stereo.zip)
-* Solution with dynamic memory allocation: [`crazy_sine_stereo_dyn.zip`](lecture3/crazy_sine_stereo_dyn.zip)
--->
+* Basic solution: [`crazy_sine_stereo.zip`](audio-sys/crazy_sine_stereo.zip)
+* Solution with dynamic memory allocation: [`crazy_sine_stereo_dyn.zip`](audio-sys/crazy_sine_stereo_dyn.zip)
 
 <!--
 **Solution:**
