@@ -52,7 +52,6 @@ Use that mecanism to control the sound and LED:
 Hint: you can switch the value of a variable `var` between 0 and 1 using the Xor operator: `var = var ^ 1;`
 
 ** Solution **
-<!---
 ```
 
 #include <Arduino.h>
@@ -204,4 +203,3 @@ void loop(void)
 }
 
 ```
---->

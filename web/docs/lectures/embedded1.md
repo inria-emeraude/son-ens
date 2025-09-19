@@ -66,7 +66,7 @@ Create a new teensy project ``teensy_led`` which blinks the LED every 100ms usin
 
 **Solution:**
 
-Posted after class...  <!--- [solution here](embedded1/img/teensy_led.tar) --->
+<!--- Posted after class... --->   [solution here](embedded1/img/teensy_led.tar) 
 
 ##Exercice: LED  and timer
 1. Copy the `teensy_led` directory to a `teensy_timer` directory. write a function `void toggle_LED()` that uses a global variable `LEDstate` which correspond to the current status of the LED. (In general, it is very common in embedded system to have a *local copy* of the state of peripheral, just to know in which state we are). 
@@ -75,14 +75,14 @@ Posted after class...  <!--- [solution here](embedded1/img/teensy_led.tar) --->
 
 **Solution:**
 
-Posted after class...   <!---  [solution here](embedded1/img/timer_led.tar) --->
+  <!--- Posted after class...  --->  [solution here](embedded1/img/timer_led.tar)
  
 ##Exercice: LED, timer and UART
 Create another project `teensy_serial` that prints, at each second, on the serial port the number of LED switch occured from the beguinning. Note that you will have to use a global variable shared by the ISR (in function `toogle_LED()`) and the main code. It is recommended to disable interrupt when modifyng this variable in the main code, using `noInterrupts()` and `Interrupts()` functions.
  
 **Solution:**
 
-Posted after class...  <!--  [solution here](embedded1/img/timer_serial.tar) -->
+<!--- Posted after class...  -->  [solution here](embedded1/img/timer_serial.tar) 
  
 ##Exercice: LED, timer and Audio
 Download the [teensy_audio](embedded1/img/teensy_audio.tar) project.. This project plays the crazy-sine sound while blinking the LED.
@@ -95,7 +95,7 @@ It is very important to spend a *very short time* in ISR, other wise your system
  
 **Solution:**
 
-Posted after class... <!--- [solution here](embedded1/img/audio_clip.tar) --->
+<!-- Posted after class... --> [solution here](embedded1/img/audio_clip.tar)
 
 ## (Optionnal) Compiling teensy project with Makefile
 
