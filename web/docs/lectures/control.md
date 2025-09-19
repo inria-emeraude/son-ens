@@ -152,9 +152,6 @@ Expand the "note looper" that [you implemented as part of the audio system cours
 
 **Solution:**
 
-Posted after class...
-
-<!--
 In `crazy-sine.ino`:
 
 ```
@@ -203,7 +200,6 @@ void loop() {
   }
 }
 ```
--->
 
 ## Audio Codec Configuration
 
