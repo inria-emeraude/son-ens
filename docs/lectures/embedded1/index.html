@@ -214,7 +214,8 @@ myTimer.begin(foo, 150000);
 <li>Using the built in function <code>delay(int numMilliSeconds)</code> write a program that blink the LED. </li>
 </ol>
 <p><strong>Solution:</strong></p>
-<p>Posted after class...  <!--- <a href="embedded1/img/teensy_led.tar">solution here</a> ---></p>
+<!--- Posted after class... --->
+<p><a href="img/teensy_led.tar">solution here</a> </p>
 <h2 id="exercice-led-and-timer">Exercice: LED  and timer</h2>
 <ol>
 <li>Copy the <code>teensy_led</code> directory to a <code>teensy_timer</code> directory. write a function <code>void toggle_LED()</code> that uses a global variable <code>LEDstate</code> which correspond to the current status of the LED. (In general, it is very common in embedded system to have a <em>local copy</em> of the state of peripheral, just to know in which state we are). </li>
@@ -222,11 +223,13 @@ myTimer.begin(foo, 150000);
 <li>What is the advantage of this approach (i.e. using timers instead of delays)</li>
 </ol>
 <p><strong>Solution:</strong></p>
-<p>Posted after class...   <!---  <a href="embedded1/img/timer_led.tar">solution here</a> ---></p>
+<!--- Posted after class...  --->
+<p><a href="img/timer_led.tar">solution here</a></p>
 <h2 id="exercice-led-timer-and-uart">Exercice: LED, timer and UART</h2>
 <p>Create another project <code>teensy_serial</code> that prints, at each second, on the serial port the number of LED switch occured from the beguinning. Note that you will have to use a global variable shared by the ISR (in function <code>toogle_LED()</code>) and the main code. It is recommended to disable interrupt when modifyng this variable in the main code, using <code>noInterrupts()</code> and <code>Interrupts()</code> functions.</p>
 <p><strong>Solution:</strong></p>
-<p>Posted after class...  <!--  <a href="embedded1/img/timer_serial.tar">solution here</a> --></p>
+<!--- Posted after class...  -->
+<p><a href="img/timer_serial.tar">solution here</a> </p>
 <h2 id="exercice-led-timer-and-audio">Exercice: LED, timer and Audio</h2>
 <p>Download the <a href="img/teensy_audio.tar">teensy_audio</a> project.. This project plays the crazy-sine sound while blinking the LED.</p>
 <ol>
@@ -235,7 +238,8 @@ myTimer.begin(foo, 150000);
 </ol>
 <p>It is very important to spend a <em>very short time</em> in ISR, other wise your system can be blocked, miss interrupts or not respect real time constraints. </p>
 <p><strong>Solution:</strong></p>
-<p>Posted after class... <!--- <a href="embedded1/img/audio_clip.tar">solution here</a> ---></p>
+<!-- Posted after class... -->
+<p><a href="img/audio_clip.tar">solution here</a></p>
 <h2 id="optionnal-compiling-teensy-project-with-makefile">(Optionnal) Compiling teensy project with Makefile</h2>
 <p>Sometimes it may be interesting to get rid of the arduino environment and provide Makefile that can be easier to tune to various sytems.</p>
 <p>Here is an example of a teensy program using a Makefile rather than the arduino environment for compilation: 
