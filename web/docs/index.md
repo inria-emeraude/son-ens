@@ -35,11 +35,11 @@ After this period, various project ideas are suggested to students. Students wor
 * **Lecture 2: [Audio Signal Processing Fundamentals](lectures/audio-dsp.md)** 
 * **Lecture 3: [Digital Audio Systems Architectures and Audio Callback](lectures/audio-sys.md)** 
 * **Lecture 4: [Hardware Control and Audio Codec Configuration](lectures/control.md)**
-* **Lecture 5: [Audio Processing Basics I](lectures/dsp1.md)** 
-* **Lecture 6: [Embedded basics: interrupts](lectures/embedded1.md)** 
-* **Lecture 7: [Embedded basics: embedded OS](lectures/embedded2.md)**
-* **Lecture 8: [Audio Processing Basics II](lectures/dsp2.md)**
-* **Lecture 9: [Introduction to Faust](lectures/faust.md)**
+* **Lecture 5: [Embedded basics: interrupts](lectures/embedded1.md)** 
+* **Lecture 6: [Embedded basics: embedded OS](lectures/embedded2.md)**
+* **Lecture 7: [Introduction to Faust](lectures/faust.md)**
+* **Lecture 8: [Audio Processing Basics I](lectures/dsp1.md)** 
+* **Lecture 9: [Audio Processing Basics II](lectures/dsp2.md)**
 * **Lecture 10: [Faust on the Teensy and Advanced Control](lectures/faust-teensy.md)**
 * **Lecture 11: [Some Other Useful Things to Know](lectures/useful.md)**
 * **Independent work on Projects** 
