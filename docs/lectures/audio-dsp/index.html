@@ -216,9 +216,10 @@
 <p>Additional proofs about the sampling theorem can be found on Julius Smith's website <a href="https://ccrma.stanford.edu/~jos/mdft/Sampling_Theorem.html">here</a>. </p>
 <h2 id="aliasing">Aliasing</h2>
 <p>Aliasing is a well known phenomenon in the field of video: </p>
-<p><center></p>
+<center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ByTsISFXUoY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p></center></p>
+</center>
+
 <p>In audio, aliasing happens when a digital signal contains frequencies above the Nyquist frequency. In that case, they are not sampled at the right frequency and they are wrapped. Hence, for all frequency <script type="math/tex">fo</script> above <script type="math/tex">fn</script>, the sampled frequency <script type="math/tex">f</script> will be:</p>
 <p>
 <script type="math/tex; mode=display">f = fn - (fo-fn)</script>
@@ -235,13 +236,15 @@
 <p>On the other hand, fixed points are relatively hard to deal with at the software level when it comes to implementing DSP algorithms. In that case, it is much more convenient to use decimal numbers (i.e., floating points). <strong>The established standard in audio is that audio signals coded on decimal numbers always have the following range: {-1;1}.</strong> While this range can be exceeded within an algorithm without any consequences, the inputs and outputs of a DSP block must always be constrained between -1 and 1. Most systems will clip audio signals to this range to prevent warping and will hence result in clipping if exceeded. </p>
 <h2 id="first-synthesized-sound-on-a-digital-computer">First Synthesized Sound on a Digital Computer</h2>
 <p>While Shanon and Nyquist theorized sampling in the 1930s, it's only in 1958 that a sound was synthesized for the first time on a computer by Max Mathews at Bell Labs, giving birth a few years later to the first song synthesized (and sung) by a computer:</p>
-<p><center></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/41U78QP8nBk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p></center></p>
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/41U78QP8nBk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+</center>
+
 <p>This was by the way reused by Stanley Kubrick in one of his famous movie as HAL the computer is slowly dying as it's being unplugged: </p>
-<p><center></p>
+<center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/E7WQ1tdxSqI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p></center></p>
+</center>
+
 <p>These technologies were then extensively exploited until today both for musical applications and in the industry at large. </p></div>
             </div>
         </div>
