@@ -13,6 +13,7 @@ nav:
     - ' 9: Audio Processing Basics II ' : lectures/dsp2.md
     - ' 10: Faust on the Teensy and Advanced Control ' : lectures/faust-teensy.md
     - ' 11: Some Other Useful Things to Know ' : lectures/useful.md
+    - ' 11: Embedded Real-Time Audio DSP: Technologies, Techniques, and Opportunities ' : https://ccrma.stanford.edu/~rmichon/talks/son-embedded-25
   - Projects: projects.md
   - Code: "https://github.com/inria-emeraude/son-ens"
     

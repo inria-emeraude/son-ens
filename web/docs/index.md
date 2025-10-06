@@ -42,6 +42,7 @@ After this period, various project ideas are suggested to students. Students wor
 * **Lecture 9: [Audio Processing Basics II](lectures/dsp2.md)**
 * **Lecture 10: [Faust on the Teensy and Advanced Control](lectures/faust-teensy.md)**
 * **Lecture 11: [Some Other Useful Things to Know](lectures/useful.md)**
+* **Lecture 12: [Embedded Real-Time Audio DSP: Technologies, Techniques, and Opportunities](https://ccrma.stanford.edu/~rmichon/talks/son-embedded-25)**
 * **Independent work on Projects** 
 
 * **Final Presentations:** Nov. 14, 2025
