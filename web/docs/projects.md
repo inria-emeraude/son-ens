@@ -1,6 +1,6 @@
 # Final Projects
 
-Final projects constitute the heart of this course: students are 100% evaluated on projects. While you should feel free to use any of the code studied during class, found on the web, or generated using tools such as [Faust](https://faust.grame.fr), the following criterion should be taken into account:
+Final projects constitute the heart of this course. While you should feel free to use any of the code studied during class, found on the web, or generated using tools such as [Faust](https://faust.grame.fr), the following criterion should be taken into account:
 
 * Doing what you were asked to do is good, but doing more is better :);
 * Novelty, creativity, and initiatives are crucial: consider your project as a potential startup idea, think about how it can be better than what already exists. Along the same lines, try to have a "product" as finished and as polished as possible;
@@ -8,15 +8,12 @@ Final projects constitute the heart of this course: students are 100% evaluated 
 
 ## Evaluation
 
-Projects will be evaluated through:
+Projects can be done individually or in groups of 2. They will be evaluated through:
 
-* A poster (pdf) presenting your project;
-* A demo video;
-* A demo of your project which will be featured during a demo session taking place on 28/02/2025. During this session, students will use the poster of their project directly on their computer as a support for providing additional information to the "public" (i.e., the other students and the instructors/evaluators).
+* An oral presentation;
+* A demo video.
 
-The quality and the presentation of the poster and of the webpage will be taken into account towards your final grade.
-
-As for the project itself, you will be evaluated on its:
+taking the following criterion into account:
 
 * robustness/stability;
 * interface;
