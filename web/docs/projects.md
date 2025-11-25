@@ -66,6 +66,10 @@ Final projects constitute the heart of this course. While you should feel free t
 
 <https://nextcloud.ens-lyon.fr/s/MFKbJqJGwWQqctx>
 
+### Juliette Gronier
+
+<https://filesender.renater.fr/?s=download&token=ead44c70-3964-4d79-b49e-8a2e7354980a>
+
 ## Evaluation
 
 Projects can be done individually or in groups of 2. They will be evaluated through:
