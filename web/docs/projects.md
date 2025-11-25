@@ -6,6 +6,66 @@ Final projects constitute the heart of this course. While you should feel free t
 * Novelty, creativity, and initiatives are crucial: consider your project as a potential startup idea, think about how it can be better than what already exists. Along the same lines, try to have a "product" as finished and as polished as possible;
 * Consider the research and scientific aspect of what you're doing: most project ideas will involve some bibliographical work before getting your hands dirty, this will help you get a sense of what has already been done by others and it will save you time when readying your poster.
 
+## 2025 Projects
+
+### Kylian Fontaine
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4ey9JzgFmpA?si=agd5JBm-kCPuQ5YC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</center>
+
+### Isaline Plaid
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xwTzc5hliaA?si=H_WOW200bOLj8euX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</center>
+
+### Clément Rémy
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5GOvZVB-4r8?si=pAnMxt8hVvzNhmNW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</center>
+
+### Ines Blanche
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m0LOeLHmJfc?si=G9Rw-UgyBgwtvPRv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</center>
+
+### Serafin Engels
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hyccjXMv-Lc?si=r6oGTPb_9_j4-8_B" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</center>
+
+### Ulysse Durand
+
+<https://youtube.com/shorts/V7wl8Mq_v3s?si=i7iR5oBRSnq1z4Oa>
+
+### Solal Stern
+
+<https://drive.google.com/drive/folders/1dAO7ErKLNDDfjIT27m90GQgtrcVv86W5?usp=sharing>
+
+### Yanis Dziki
+
+<https://drive.google.com/file/d/1dSiuTY8apZjNvBGPwIznP65TmzQOrgqN/view?usp=sharing>
+
+### Olle Flygar
+
+<https://www.dropbox.com/scl/fo/pwlpma4rpeiz50b780d6f/ANpq8PNQsnHD_r9fUmIsAJA?rlkey=adbugs2433m9ybjlzulyopcma&e=1&st=o72cgiqv&dl=0>
+
+### Lucien Loriferne
+
+<https://filesender.renater.fr/?s=download&token=d8d248a3-41c7-49da-9ed1-7103932d4374>
+
+### Armand Didierjean
+
+<https://filesender.renater.fr/?s=download&token=f750aa08-29d9-476f-bc7c-aaaf7a17fa81>
+
+### Hugo Martel
+
+<https://nextcloud.ens-lyon.fr/s/MFKbJqJGwWQqctx>
+
 ## Evaluation
 
 Projects can be done individually or in groups of 2. They will be evaluated through:
