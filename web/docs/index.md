@@ -14,6 +14,7 @@ After this period, various project ideas are suggested to students. Students wor
 
 ## Resources
 
+* Course Website: <https://inria-emeraude.github.io/son-ens/>
 * Course GitHub Repository: <https://github.com/inria-emeraude/son-ens>
 * Teensy Audio Library: <https://www.pjrc.com/teensy/td_libs_Audio.html>
 * The SON kit for a group of two students:
